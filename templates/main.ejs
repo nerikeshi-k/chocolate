@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://twemoji.maxcdn.com/2/twemoji.min.js?11.3"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css" />
+    <script>
+      "use strict";
+      const converter = (rune) => {
+        switch(rune) {
+          case '&': return '&amp;';
+          case '\'': return '&#x27;';
+          case '`': return '&#x60;';
+          case '"': return '&quot;';
+          case '<': return '&lt;';
+          case '>': return '&gt;';
+          default: return rune;
+        }
+      }
+      const escape = (string) => {
+        return string.replace(/[&'`"<>]/g, (match) => 
+          converter(match)
+        );
+      };
+
+      const adjustFontSize = (content, contentWrapper, fontSize = 80) => {
+        // 文字の量に合わせてfontSizeを変更 (5まで下げてもだめなら諦める)
+        content.style.fontSize = `${fontSize}px`;
+        if (content.clientHeight > contentWrapper.clientHeight && fontSize > 5) {
+          adjustFontSize(content, contentWrapper, Math.floor(fontSize * 0.9));
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const content = document.querySelector('#content');
+        const contentWrapper = document.querySelector('#content-wrapper');
+
+        // twitter絵文字を適用
+        const text = escape(content.getAttribute('data-text')).replace(/\n/g, '<br>');
+        content.innerHTML = twemoji.parse(text);
+
+        adjustFontSize(content, contentWrapper);
+      });
+    </script>
+  </head>
+  <body>
+    <main style="width: <%= width %>px; height: <%= height %>px;">
+      <div class="card">
+        <div class="card--inner" id="content-wrapper">
+          <div class="content" id="content" data-text="<%= text %>"></div>
+          <div class="logo">odaibako.net</div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

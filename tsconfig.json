@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "module": "commonjs",
+    "target": "es2015",
+    "strict": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noEmitOnError": true,
+    "declaration": true,
+    "lib": ["es2017", "dom"]
+  },
+  "exclude": ["node_modules", "dist"]
+}
