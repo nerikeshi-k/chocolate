@@ -26,7 +26,7 @@
         );
       };
 
-      const adjustFontSize = (content, contentWrapper, fontSize = 80) => {
+      const adjustFontSize = (content, contentWrapper, fontSize = 65) => {
         // 文字の量に合わせてfontSizeを変更 (5まで下げてもだめなら諦める)
         content.style.fontSize = `${fontSize}px`;
         if (content.clientHeight > contentWrapper.clientHeight && fontSize > 5) {
