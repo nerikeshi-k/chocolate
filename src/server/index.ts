@@ -11,9 +11,13 @@ export const extractQuery = (query: Partial<Query>): Query | null => {
   if (!isQueryPerfect(query)) {
     return null;
   }
-  return {
-    text: decodeURIComponent(query.text)
-  };
+  try {
+    return {
+      text: decodeURIComponent(query.text)
+    };
+  } catch (e) {
+    return null;
+  }
 };
 
 export const run = (port: number, assetsServerUrl: string) => {
