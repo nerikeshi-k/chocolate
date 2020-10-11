@@ -1,6 +1,8 @@
+import { EventEmitter } from 'events';
 import * as puppeteer from 'puppeteer';
-import * as EventEmitter from 'events';
-import { Source, isSourceUrl } from '.';
+import type { Source, URLSource } from '.';
+
+export const isSourceUrl = (source: Source): source is URLSource => source.url != null;
 
 export default class Worker {
   page: puppeteer.Page;
@@ -21,7 +23,7 @@ export default class Worker {
     } else {
       await this.page.setContent(source.html);
     }
-    const result = await this.page.screenshot({ type: 'jpeg' });
+    const result = await this.page.screenshot({ type: 'png' });
     this.isIdle = true;
     this.emitter.emit('finished');
     return result;
@@ -30,7 +32,7 @@ export default class Worker {
   async waitForFinished(): Promise<Worker> {
     if (this.isIdle) return this;
 
-    return new Promise<Worker>(resolve => {
+    return new Promise<Worker>((resolve) => {
       this.emitter.once('finish', () => resolve(this));
     });
   }

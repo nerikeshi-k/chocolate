@@ -1,7 +1,7 @@
-import * as factory from './pictureFactory';
 import * as dotenv from 'dotenv';
-import * as server from './server';
 import * as assetsServer from './contentServer';
+import * as factory from './pictureFactory';
+import * as server from './server';
 
 dotenv.config();
 

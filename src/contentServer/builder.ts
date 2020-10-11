@@ -5,8 +5,8 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const WIDTH = Number(process.env.WIDTH);
-const HEIGHT = Number(process.env.HEIGHT);
+const WIDTH = parseInt(process.env.WIDTH ?? '', 10);
+const HEIGHT = parseInt(process.env.HEIGHT ?? '', 10);
 
 const templatesDir = path.join(process.cwd(), 'templates');
 const templateFileName = 'main.ejs';

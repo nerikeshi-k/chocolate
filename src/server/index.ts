@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express = require('express');
 import * as factory from '../pictureFactory';
 
 export interface Query {
@@ -32,7 +32,7 @@ export const run = (port: number, assetsServerUrl: string) => {
     const textEncoded = encodeURIComponent(query.text);
     const url = `${assetsServerUrl}?text=${textEncoded}`;
     const picture = await factory.publish({ url });
-    res.type('jpeg').send(picture);
+    res.type('png').send(picture);
   });
 
   app.listen(port, () => console.log(`🌟 app server is listening on port ${port}`));

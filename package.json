@@ -4,32 +4,33 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "start": "tsc && node ./dist/index.js",
     "start:dev": "tsc && NODE_ENV=development node ./dist/index.js"
   },
   "dependencies": {
-    "dotenv": "^7.0.0",
-    "ejs": "^2.6.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "^4.16.4",
     "lodash.shuffle": "^4.2.0",
-    "puppeteer": "^1.13.0"
+    "puppeteer": "^5.3.1"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.0",
-    "@types/ejs": "^2.6.3",
+    "@types/dotenv": "^8.2.0",
+    "@types/ejs": "^3.0.4",
     "@types/express": "^4.16.1",
     "@types/lodash.shuffle": "^4.2.6",
-    "@types/puppeteer": "^1.12.3",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.1.0",
+    "@types/puppeteer": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "jest": "^24.5.0",
-    "prettier": "^1.16.4",
-    "typescript": "^3.3.3333"
+    "jest": "^26.5.3",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
   },
   "description": "ogp text server",
   "author": "nerikeshi-k"
